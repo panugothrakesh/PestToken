@@ -1,6 +1,6 @@
 //SPDX-License-Identifier: MIT
 // Author: @rakeshapnugoth
-pragma solidity ^0.8.28;
+pragma solidity ^0.8.27;
 
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol';
@@ -10,11 +10,11 @@ contract PestSeed is ERC20Capped, ERC20Burnable {
     address payable public owner;
     uint256 public blockReward;
 
-    constructor (uint256 cap, uint reward) ERC20('PestSeed', 'PST') ERC20Capped(cap * (10 ** decimals())){
+    constructor () ERC20('PestSeed', 'PST') ERC20Capped(40000000 * (10 ** decimals())){
         owner = payable(msg.sender);
         uint256 send = 10000000 * (10 ** decimals());
         _mint(owner, send);
-        blockReward = reward * (10 ** decimals());
+        blockReward = 50 * (10 ** decimals());
     }
 
     function _update(address from, address to, uint256 value) internal virtual override(ERC20Capped, ERC20) {
